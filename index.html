@@ -261,14 +261,14 @@
   .insight-card.full   .insight-horizon { color: var(--accent); }
   .insight-title {
     font-family: 'Instrument Serif', serif;
-    font-size: 1.6rem; font-weight: 400;
+    font-size: 2rem; font-weight: 400;
     color: var(--text); margin-bottom: 0.75rem; line-height: 1.25;
   }
   .insight-body { font-size: 13px; color: var(--muted); line-height: 1.7; }
   .insight-body strong { color: var(--text); font-weight: 500; }
   .insight-stat {
     font-family: 'DM Mono', monospace;
-    font-size: 1.6rem; font-weight: 500;
+    font-size: 1rem; font-weight: 500;
     margin-top: 1rem; display: block;
   }
   .insight-card.danger .insight-stat { color: var(--danger); }
@@ -310,6 +310,41 @@
     color: var(--muted);
   }
 
+  /* DATA FRESHNESS BANNER */
+  .freshness-banner {
+    background: rgba(200,240,96,0.06);
+    border: 1px solid rgba(200,240,96,0.2);
+    border-radius: 10px;
+    padding: 0.875rem 1.25rem;
+    margin-bottom: 2.5rem;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .freshness-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .freshness-text { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .freshness-text strong { color: var(--accent); font-weight: 500; }
+
+  /* PROJECTION LABEL */
+  .proj-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    background: rgba(240,176,96,0.12); color: var(--amber);
+    border: 1px solid rgba(240,176,96,0.25);
+    padding: 2px 7px; border-radius: 4px;
+    vertical-align: middle; margin-left: 8px;
+  }
+
+  /* CONFIRMED LABEL */
+  .confirmed-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    background: rgba(26,158,118,0.12); color: #1a9e76;
+    border: 1px solid rgba(26,158,118,0.25);
+    padding: 2px 7px; border-radius: 4px;
+    vertical-align: middle; margin-left: 8px;
+  }
+
   /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
@@ -344,6 +379,7 @@
   <div class="nav-links">
     <a href="#data">Data</a>
     <a href="#projections">2025–2026</a>
+    <a href="#models">AI Models</a>
     <a href="#insights">Future Risks</a>
     <a href="#sources">Sources</a>
   </div>
@@ -353,7 +389,7 @@
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-tag">Environmental Impact Report · Updated June 2026</div>
+    <div class="hero-tag">Last confirmed data: 2024 actuals · Estimates & projections to 2026 · Updated June 2026</div>
     <h1>AI's <em>hidden</em><br>cost to the planet</h1>
     <div class="hero-slogan">Think before you prompt.</div>
     <p class="hero-sub">Every query burns energy. Every inference draws water. The AI boom is rewriting the rules of resource consumption — here's what the data from Google, Microsoft, Meta, and Amazon actually shows.</p>
@@ -363,7 +399,7 @@
         <span class="hero-stat-label">Big Tech water rise 2020–23</span>
       </div>
       <div>
-        <span class="hero-stat-val">485<span>TWh</span></span>
+        <span class="hero-stat-val">460<span>TWh</span></span>
         <span class="hero-stat-label">Global data center demand 2025</span>
       </div>
       <div>
@@ -379,35 +415,40 @@
 
 <section id="data">
   <div class="fade-in">
-    <div class="section-eyebrow">Energy consumption — 2024 actuals</div>
+    <div class="section-eyebrow">Last reported actuals — company sustainability reports</div>
     <h2 class="section-title">Electricity use<br>is accelerating</h2>
-    <p class="section-desc">Data center electricity consumption grew more than 25% for the second consecutive year in 2024. Google's data centers doubled their power usage in just four years. AI inference workloads now run 24/7 at scale, making efficiency gains harder to sustain.</p>
+    <p class="section-desc">These are the most recent <em>confirmed</em> figures from official sustainability reports — covering calendar year 2024 (Google, Meta) and Microsoft's fiscal year 2024 (July 2023–June 2024). No company has yet published 2025 actuals. Google's data centers have grown 7× since 2014 and doubled since 2020. Remarkably, Google cut its data center <em>emissions</em> by 12% despite the 27% energy surge — driven by clean energy projects and chip efficiency gains.</p>
+  </div>
+
+  <div class="freshness-banner fade-in">
+    <div class="freshness-icon">⚡</div>
+    <div class="freshness-text"><strong>Data transparency note —</strong> The figures below are the latest <em>confirmed</em> actuals from official company reports (published mid-2025, covering 2024). Companies publish annual sustainability reports roughly 6 months after year-end — meaning 2025 actuals won't be public until mid-2026 at earliest. The "2025–2026" section uses IEA projections, investor disclosures, and capex commitments. Labels mark <span style="color:#1a9e76;font-weight:500;">CONFIRMED</span> vs <span style="color:var(--amber);font-weight:500;">PROJECTED</span> figures throughout.</div>
   </div>
 
   <div class="kpi-grid fade-in">
     <div class="kpi-card">
-      <div class="kpi-company" style="color:var(--google)">Google</div>
-      <div class="kpi-value">30.8</div>
-      <div class="kpi-unit">TWh electricity · 2024</div>
-      <div class="kpi-delta">↑ 27% YoY · doubled since 2020</div>
+      <div class="kpi-company" style="color:var(--google)">Google <span class="confirmed-badge">2024 confirmed</span></div>
+      <div class="kpi-value">32.2</div>
+      <div class="kpi-unit">TWh total · 30.8 DC only · Google 2025 Env. Report</div>
+      <div class="kpi-delta">↑ 27% YoY · 7× since 2014</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-company" style="color:var(--microsoft)">Microsoft</div>
-      <div class="kpi-value">30.0</div>
-      <div class="kpi-unit">TWh electricity · FY2024</div>
-      <div class="kpi-delta">↑ 27% YoY</div>
+      <div class="kpi-company" style="color:var(--microsoft)">Microsoft <span class="confirmed-badge">FY2024 confirmed</span></div>
+      <div class="kpi-value">29.8</div>
+      <div class="kpi-unit">TWh · Microsoft 2025 Sustainability Report</div>
+      <div class="kpi-delta">↑ 3× since FY2020 (10.8 TWh)</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-company" style="color:var(--meta)">Meta</div>
-      <div class="kpi-value">15.0</div>
-      <div class="kpi-unit">TWh electricity · 2024</div>
-      <div class="kpi-delta">↑ 32% YoY</div>
+      <div class="kpi-company" style="color:var(--meta)">Meta <span class="confirmed-badge">2024 confirmed</span></div>
+      <div class="kpi-value">~15.6</div>
+      <div class="kpi-unit">TWh location-based · Meta 2025 Report</div>
+      <div class="kpi-delta">↑ 15 GW new clean energy contracted 2024</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-company" style="color:var(--apple)">Amazon (AWS)</div>
+      <div class="kpi-company" style="color:var(--apple)">Amazon <span class="proj-badge">partial 2024</span></div>
       <div class="kpi-value">100+</div>
-      <div class="kpi-unit">TWh total operations · 2024</div>
-      <div class="kpi-delta">↑ 6% total emissions</div>
+      <div class="kpi-unit">TWh total ops · limited public DC disclosure</div>
+      <div class="kpi-delta">Investor pressure to disclose site-level data</div>
     </div>
   </div>
 
@@ -429,33 +470,33 @@
   <div class="fade-in" style="margin-top:4rem;">
     <div class="section-eyebrow">Water consumption — 2023–2024</div>
     <h2 class="section-title">Water scarcity<br>meets AI thirst</h2>
-    <p class="section-desc">Data center cooling is intensely water-dependent. In 2024, Google consumed 8.1 billion gallons across its data centers and offices — up from 6.1B in 2023. The 2024 figures represent a new high, with no sign of levelling off.</p>
+    <p class="section-desc">Data center cooling is intensely water-dependent. Google's 2025 Environmental Report confirmed 8.1 billion gallons consumed in 2024 — a 28% jump from 2023 — while replenishing 4.5 billion gallons (64%). Microsoft's water consumption rose 34% between 2022 and 2024. Meta restored 1.6 billion gallons through 40+ watershed projects in 2024 alone.</p>
   </div>
 
   <div class="kpi-grid fade-in">
     <div class="kpi-card">
-      <div class="kpi-company" style="color:var(--google)">Google <span class="new-badge">2024</span></div>
+      <div class="kpi-company" style="color:var(--google)">Google <span class="confirmed-badge">2024 confirmed</span></div>
       <div class="kpi-value">8.1B</div>
-      <div class="kpi-unit">gallons · data centers + offices · 2024</div>
-      <div class="kpi-delta">↑ from 6.1B in 2023</div>
+      <div class="kpi-unit">gallons consumed · replenished 4.5B (64%)</div>
+      <div class="kpi-delta">↑ 28% from 6.1B in 2023</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-company" style="color:var(--microsoft)">Microsoft</div>
-      <div class="kpi-value">1.7B</div>
-      <div class="kpi-unit">gallons · 7.8M m³ · 2023</div>
-      <div class="kpi-delta">↑ 87% since 2020</div>
+      <div class="kpi-company" style="color:var(--microsoft)">Microsoft <span class="confirmed-badge">FY2024</span></div>
+      <div class="kpi-value">~2.3B</div>
+      <div class="kpi-unit">gallons · up 34% from 2022 to 2024</div>
+      <div class="kpi-delta">New DCs in EU/APAC: zero water cooling design</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-company" style="color:var(--meta)">Meta</div>
-      <div class="kpi-value">800M</div>
-      <div class="kpi-unit">gallons · 3M m³ · 2023</div>
-      <div class="kpi-delta">↑ 40% since 2020</div>
+      <div class="kpi-company" style="color:var(--meta)">Meta <span class="confirmed-badge">2024</span></div>
+      <div class="kpi-value">~900M</div>
+      <div class="kpi-unit">gallons · restored 1.6B via 40+ projects</div>
+      <div class="kpi-delta">Targeting water-positive by 2030</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-company" style="color:var(--apple)">Apple</div>
-      <div class="kpi-value">1.6B</div>
-      <div class="kpi-unit">gallons · 6M m³ · 2023</div>
-      <div class="kpi-delta">↑ 25% since 2020</div>
+      <div class="kpi-company" style="color:var(--apple)">N. America DCs <span class="confirmed-badge">2025</span></div>
+      <div class="kpi-value">~1T</div>
+      <div class="kpi-unit">liters total · 2025 (Mordor Intelligence)</div>
+      <div class="kpi-delta">Investors demanding site-level disclosure</div>
     </div>
   </div>
 
@@ -501,41 +542,41 @@
 
 <section id="projections">
   <div class="fade-in">
-    <div class="section-eyebrow">2025 & 2026 data — IEA & company reports</div>
+    <div class="section-eyebrow">2025 estimates & 2026 commitments — what we know now</div>
     <h2 class="section-title">The trajectory<br>is steepening</h2>
-    <p class="section-desc">Updated figures from the IEA's 2026 report and company 2025 sustainability disclosures show demand accelerating faster than most forecasts predicted. Big Tech capex on data centers exceeded $400 billion in 2025 alone — more than total global investment in oil and gas production.</p>
+    <p class="section-desc">No company has published 2025 actuals yet — sustainability reports for calendar year 2025 are expected mid-2026. What we do have: IEA estimates, confirmed capex from earnings calls, hyperscale count from SRG, and specific disclosures like Google's prompt efficiency gains. These are the most current data points available as of June 2026.</p>
   </div>
 
   <div class="kpi-grid fade-in">
     <div class="kpi-card">
-      <div class="kpi-company" style="color:var(--accent)">Global — 2025 <span class="new-badge">IEA 2026</span></div>
-      <div class="kpi-value">485</div>
-      <div class="kpi-unit">TWh data center electricity · 2025 estimate</div>
-      <div class="kpi-delta">↑ ~17% from 415 TWh in 2024</div>
+      <div class="kpi-company" style="color:var(--accent)">Global DCs — 2025 <span class="proj-badge">IEA estimate</span></div>
+      <div class="kpi-value">460</div>
+      <div class="kpi-unit">TWh · rivals France's entire electricity use</div>
+      <div class="kpi-delta">↑ from 415 TWh in 2024 · growing 12%/yr since 2017</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-company" style="color:var(--accent)">US only — 2025 <span class="new-badge">IEA</span></div>
-      <div class="kpi-value">200+</div>
-      <div class="kpi-unit">TWh US data centers · 2025 projected</div>
-      <div class="kpi-delta">↑ from 182 TWh in 2024</div>
+      <div class="kpi-company" style="color:var(--accent)">Big Tech capex — 2025 <span class="confirmed-badge">earnings calls</span></div>
+      <div class="kpi-value">$320B</div>
+      <div class="kpi-unit">Meta + Amazon + Alphabet + Microsoft · 2025</div>
+      <div class="kpi-delta">↑ from $230B in 2024 · $700B planned 2026</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-company" style="color:var(--accent)">Big Tech capex — 2025 <span class="new-badge">new</span></div>
-      <div class="kpi-value">$400B+</div>
-      <div class="kpi-unit">data center investment · 2025</div>
-      <div class="kpi-delta">↑ 75% jump expected in 2026</div>
+      <div class="kpi-company" style="color:var(--accent)">Hyperscale DCs — 2025 <span class="confirmed-badge">SRG data</span></div>
+      <div class="kpi-value">1,360</div>
+      <div class="kpi-unit">large hyperscale data centers globally end-2025</div>
+      <div class="kpi-delta">↑ nearly 3× from 2018 · Microsoft doubling footprint</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-company" style="color:var(--google)">Google water — 2024 <span class="new-badge">new</span></div>
-      <div class="kpi-value">8.1B</div>
-      <div class="kpi-unit">gallons consumed · 2024 (up 33%)</div>
-      <div class="kpi-delta">↑ 4.5B gal replenished (64%)</div>
+      <div class="kpi-company" style="color:var(--google)">Google energy intensity <span class="confirmed-badge">2025</span></div>
+      <div class="kpi-value">33×</div>
+      <div class="kpi-unit">reduction in energy per Gemini prompt since May 2024</div>
+      <div class="kpi-delta">Carbon footprint per prompt fell 44× in 12 months</div>
     </div>
   </div>
 
   <div class="projection-panel fade-in">
     <div class="chart-panel-title">Global data center electricity demand — historical & IEA projections to 2030 (TWh)</div>
-    <div class="chart-panel-sub">IEA base case (2026 report): doubling from 485 TWh in 2025 to 950 TWh in 2030. AI-focused centers grow 3× in the same period. Shaded area = projection range.</div>
+    <div class="chart-panel-sub">IEA base case: 415 TWh in 2024 → 460 TWh in 2025 (rivals France) → 945 TWh in 2030. AI share rising from 5–15% today to 35–50% by 2030. Shaded area = projection range.</div>
     <div class="chart-legend">
       <span class="legend-item"><span class="legend-sq" style="background:#c8f060"></span>Historical (IEA)</span>
       <span class="legend-item"><span class="legend-sq" style="background:rgba(200,240,96,0.4)"></span>IEA base case projection</span>
@@ -560,6 +601,82 @@
       <div style="position:relative;height:220px;">
         <canvas id="capexChart" role="img" aria-label="Bar chart of combined big tech capex on data centers, rising sharply from 2023 to 2026.">Investment is accelerating dramatically each year.</canvas>
       </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="models">
+  <div class="fade-in">
+    <div class="section-eyebrow">OpenAI · Anthropic · DeepSeek · Perplexity</div>
+    <h2 class="section-title">The next generation<br>of AI energy hunger</h2>
+    <p class="section-desc">The Big Tech hyperscalers are no longer the only story. Pure-play AI companies are building infrastructure at a speed and scale that dwarfs anything before — with far less transparency about the environmental cost.</p>
+  </div>
+
+  <div class="kpi-grid fade-in">
+    <div class="kpi-card">
+      <div class="kpi-company" style="color:#a78bfa">OpenAI / Stargate</div>
+      <div class="kpi-value">10 GW</div>
+      <div class="kpi-unit">planned capacity by end-2025 · $500B investment</div>
+      <div class="kpi-delta">↑ target: 250 GW by 2033</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-company" style="color:#a78bfa">ChatGPT queries</div>
+      <div class="kpi-value">22 TWh</div>
+      <div class="kpi-unit">estimated annual energy · 900M weekly users</div>
+      <div class="kpi-delta">≈ Puerto Rico's total electricity use</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-company" style="color:#f97316">Anthropic</div>
+      <div class="kpi-value">5 GW</div>
+      <div class="kpi-unit">projected power need per frontier model by 2027</div>
+      <div class="kpi-delta">pledged to cover electricity price increases</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-company" style="color:#22d3ee">DeepSeek-R1</div>
+      <div class="kpi-value">33+ Wh</div>
+      <div class="kpi-unit">per long prompt · 70× more than GPT-4.1 nano</div>
+      <div class="kpi-delta">highest per-query energy of any major model</div>
+    </div>
+  </div>
+
+  <div class="chart-grid fade-in">
+    <div class="chart-panel">
+      <div class="chart-panel-title">Energy per query — model comparison (Wh per long prompt)</div>
+      <div class="chart-panel-sub">Academic benchmarking study, May 2025 — infrastructure-aware estimates across 30 models</div>
+      <div style="position:relative;height:260px;">
+        <canvas id="perQueryChart" role="img" aria-label="Horizontal bar chart of energy per long prompt. DeepSeek-R1 and o3 top 33Wh, GPT-4.5 at 30Wh, GPT-4o at 0.43Wh, Claude 3.7 Sonnet among most efficient.">DeepSeek-R1 and o3 are the most energy-intensive per query by a wide margin.</canvas>
+      </div>
+    </div>
+    <div class="chart-panel">
+      <div class="chart-panel-title">OpenAI Stargate capacity buildout (GW planned)</div>
+      <div class="chart-panel-sub">Phased rollout from Sam Altman's September 2025 internal memo and public announcements</div>
+      <div style="position:relative;height:260px;">
+        <canvas id="stargateChart" role="img" aria-label="Bar chart showing OpenAI Stargate planned capacity growing from 2GW in 2025 to 250GW by 2033.">OpenAI's planned capacity dwarfs any existing data center operator.</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-panel full fade-in" style="margin-top:0;">
+    <div class="chart-panel-title">AI model energy intensity — what your choice of model actually costs at scale</div>
+    <div class="chart-panel-sub">At 700M queries/day: scaling a 33 Wh model vs a 0.43 Wh model means the difference between powering 35,000 homes vs 450 homes — every single day. Claude 3.7 Sonnet ranks highest in eco-efficiency per unit of performance (cross-efficiency DEA analysis).</div>
+    <div class="chart-legend" style="margin-top:0.5rem;">
+      <span class="legend-item"><span class="legend-sq" style="background:#a78bfa"></span>OpenAI</span>
+      <span class="legend-item"><span class="legend-sq" style="background:#f97316"></span>Anthropic</span>
+      <span class="legend-item"><span class="legend-sq" style="background:#22d3ee"></span>DeepSeek</span>
+      <span class="legend-item"><span class="legend-sq" style="background:#4a8fd4"></span>Google</span>
+    </div>
+    <div style="position:relative;height:200px;margin-top:1rem;">
+      <canvas id="scaleImpactChart" role="img" aria-label="Bar chart showing estimated daily electricity use at 700M queries per model. DeepSeek-R1 and o3 use dramatically more than efficient models.">At scale, model choice is one of the most powerful levers for reducing AI's environmental footprint.</canvas>
+    </div>
+  </div>
+
+  <div class="insight-card blue fade-in" style="margin-top:16px; border-left: 3px solid #f97316;">
+    <div class="insight-horizon" style="color:#f97316;">Anthropic's pledge — May 2026</div>
+    <div class="insight-title">Covering the cost — a new accountability model</div>
+    <div class="insight-body">
+      Anthropic became the first pure-play AI company to commit to paying <strong>100% of grid upgrade costs</strong> required to connect its data centers, investing in curtailment systems to cut power use during grid stress, and deploying water-efficient cooling technologies. It also committed to bringing new power generation online to match its demand rather than displacing existing consumers. <strong>OpenAI made a parallel pledge</strong> to "pay its own way" on electricity costs. Whether these commitments hold as Stargate scales from 10 GW to 250 GW remains the defining accountability question of the decade.
     </div>
   </div>
 </section>
@@ -660,9 +777,9 @@
 
 <footer id="sources">
   <div class="footer-sources">
-    <strong style="color:var(--muted); font-weight:500;">Sources —</strong> IEA Key Questions on Energy and AI (Apr 2026); IEA Energy and AI report (2025); IEA Electricity Mid-Year Update 2025; Google 2025 Environmental Report; Microsoft FY2024 Sustainability Report; Meta 2024 Sustainability Report; Amazon 2024 Sustainability Report; Barclays via Investing.com (Jul 2025); TechCrunch (Jul 2025); Data Centre Magazine (Jul 2025 & Mar 2026); Brookings Institution (Apr 2026); Food & Water Watch (Mar 2026); Surfshark Research (Apr 2025); Yale E360; Lawrence Berkeley National Laboratory US Data Center Energy Usage Report (2024); Fast Company / Rutgers Law Journal (Aug 2025); Sustainability Atlas (Feb 2026).
+    <strong style="color:var(--muted); font-weight:500;">Sources —</strong> Google 2025 Environmental Report (Jun 2025); Microsoft 2025 Environmental Sustainability Report (May 2025); Meta 2025 Sustainability Report (Sep 2025); IEA Energy and AI (2025) & Key Questions on Energy and AI (Apr 2026); Sustainability Atlas (Feb 2026); Lawrence Berkeley National Laboratory US Data Center Energy Usage Report (Dec 2024); Brookings Institution (Apr 2026); Food & Water Watch (Mar 2026); Consumer Reports (Mar 2026); Data Centre Dynamics (May 2026); IEEE Spectrum (Oct 2025); BestBrokers.com (2025); Epoch AI (Feb 2025); Academic benchmarking study: "How Hungry is AI?" (May 2025, arXiv); Policy Review / Greenwashing analysis (Aug 2025); Carbon Brief (Sep 2025); World Economic Forum (Dec 2025); OpenAI Stargate announcements (Jan & Sep 2025). Last updated June 2026.
   </div>
-  <div class="footer-brand">AI Cost Monitor · June 2026</div>
+  <div class="footer-brand">AI Cost Monitor · June 2026<br><a href="https://franciscomelo.net" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;opacity:0.7;">Made by franciscomelo.net</a></div>
 </footer>
 
 <script>
@@ -695,9 +812,9 @@ new Chart(document.getElementById('energyTrend'), {
   data: {
     labels: ['2020','2021','2022','2023','2024'],
     datasets: [
-      { label: 'Google', data: [14.4,18.3,21.2,24.3,30.8], borderColor: '#4a8fd4', backgroundColor: 'rgba(74,143,212,0.08)', fill: true, tension: 0.4, borderWidth: 2.5, pointBackgroundColor: '#4a8fd4', pointRadius: 4 },
-      { label: 'Microsoft', data: [13.0,15.6,18.0,23.6,30.0], borderColor: '#1a9e76', backgroundColor: 'rgba(26,158,118,0.08)', fill: true, tension: 0.4, borderWidth: 2.5, pointBackgroundColor: '#1a9e76', pointRadius: 4, borderDash: [6,3] },
-      { label: 'Meta', data: [7.2,8.5,10.2,11.4,15.0], borderColor: '#c44a7a', backgroundColor: 'rgba(196,74,122,0.08)', fill: true, tension: 0.4, borderWidth: 2.5, pointBackgroundColor: '#c44a7a', pointRadius: 4, borderDash: [2,3] }
+      { label: 'Google', data: [14.4,18.3,21.2,24.3,32.2], borderColor: '#4a8fd4', backgroundColor: 'rgba(74,143,212,0.08)', fill: true, tension: 0.4, borderWidth: 2.5, pointBackgroundColor: '#4a8fd4', pointRadius: 4 },
+      { label: 'Microsoft', data: [10.8,15.6,18.0,23.6,29.8], borderColor: '#1a9e76', backgroundColor: 'rgba(26,158,118,0.08)', fill: true, tension: 0.4, borderWidth: 2.5, pointBackgroundColor: '#1a9e76', pointRadius: 4, borderDash: [6,3] },
+      { label: 'Meta', data: [7.2,8.5,10.2,11.4,15.6], borderColor: '#c44a7a', backgroundColor: 'rgba(196,74,122,0.08)', fill: true, tension: 0.4, borderWidth: 2.5, pointBackgroundColor: '#c44a7a', pointRadius: 4, borderDash: [2,3] }
     ]
   },
   options: { ...base, scales: { ...base.scales, y: { ...base.scales.y, ticks: { ...base.scales.y.ticks, callback: v => v + ' TWh' } } } }
@@ -761,13 +878,13 @@ new Chart(document.getElementById('globalProjection'), {
       },
       {
         label: 'IEA base case',
-        data: [null, null, 415, 485, 570, 680, 780, 870, 950],
+        data: [null, null, 415, 460, 560, 670, 770, 860, 945],
         borderColor: 'rgba(200,240,96,0.5)', backgroundColor: 'rgba(200,240,96,0.07)',
         fill: true, borderWidth: 2, borderDash: [6,4], pointBackgroundColor: 'rgba(200,240,96,0.5)', pointRadius: 3, tension: 0.3
       },
       {
         label: 'High-growth scenario',
-        data: [null, null, 415, 530, 680, 820, 930, 990, 1050],
+        data: [null, null, 415, 510, 660, 800, 910, 980, 1050],
         borderColor: 'rgba(240,96,96,0.4)', backgroundColor: 'rgba(240,96,96,0.04)',
         fill: true, borderWidth: 1.5, borderDash: [3,3], pointRadius: 2, tension: 0.3
       }
@@ -790,7 +907,57 @@ new Chart(document.getElementById('usDemand'), {
   options: { ...base, scales: { ...base.scales, y: { ...base.scales.y, ticks: { ...base.scales.y.ticks, callback: v => v + ' TWh' } }, x: { ...base.scales.x, ticks: { ...base.scales.x.ticks, maxRotation: 45 } } } }
 });
 
-// Capex chart
+// Per-query energy comparison
+new Chart(document.getElementById('perQueryChart'), {
+  type: 'bar',
+  data: {
+    labels: ['DeepSeek-R1','OpenAI o3','GPT-4.5','GPT-4o','Claude 3.5 Sonnet','Claude 3.7 Sonnet','Gemini 1.5 Pro','GPT-4o mini'],
+    datasets: [{
+      data: [33.4, 33.1, 30.0, 0.43, 0.9, 0.7, 0.3, 0.1],
+      backgroundColor: ['#22d3ee','#a78bfa','#a78bfa','#a78bfa','#f97316','#f97316','#4a8fd4','#a78bfa'],
+      borderRadius: 3
+    }]
+  },
+  options: { ...base, indexAxis: 'y', scales: {
+    x: { ...base.scales.x, ticks: { ...base.scales.x.ticks, callback: v => v + ' Wh' } },
+    y: { ...base.scales.y, grid: { display: false }, ticks: { ...base.scales.y.ticks, font: { size: 10, family: 'DM Mono' } } }
+  }}
+});
+
+// Stargate buildout
+new Chart(document.getElementById('stargateChart'), {
+  type: 'bar',
+  data: {
+    labels: ['End-2025','2026','2027','2028','2029','2030','2031','2032','2033'],
+    datasets: [{
+      label: 'GW capacity',
+      data: [10, 20, 35, 60, 95, 140, 180, 215, 250],
+      backgroundColor: (ctx) => {
+        const alpha = 0.3 + (ctx.dataIndex / 8) * 0.5;
+        return `rgba(167,139,250,${alpha})`;
+      },
+      borderRadius: 3
+    }]
+  },
+  options: { ...base, scales: { ...base.scales, y: { ...base.scales.y, ticks: { ...base.scales.y.ticks, callback: v => v + ' GW' } } } }
+});
+
+// Scale impact at 700M queries/day
+new Chart(document.getElementById('scaleImpactChart'), {
+  type: 'bar',
+  data: {
+    labels: ['DeepSeek-R1\n(33.4 Wh)','OpenAI o3\n(33.1 Wh)','GPT-4.5\n(30 Wh)','GPT-4o\n(0.43 Wh)','Claude 3.7\n(0.7 Wh)','Gemini 1.5\n(0.3 Wh)'],
+    datasets: [{
+      label: 'MWh/day at 700M queries',
+      data: [23380, 23170, 21000, 301, 490, 210],
+      backgroundColor: ['#22d3ee','#a78bfa','#a78bfa','#a78bfa','#f97316','#4a8fd4'],
+      borderRadius: 3
+    }]
+  },
+  options: { ...base, scales: { ...base.scales, y: { ...base.scales.y, ticks: { ...base.scales.y.ticks, callback: v => (v/1000).toFixed(0) + ' GWh/day' } } } }
+});
+
+
 new Chart(document.getElementById('capexChart'), {
   type: 'bar',
   data: {
